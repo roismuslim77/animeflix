@@ -1,35 +1,27 @@
 import React from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-export default class Movies extends React.Component{
-    constructor(){
-        super()
-        this.state={
-            details: [],
-            video:[],
-            url:''
-        }
-    }
+import * as actionCreate from '../../redux/actions/getAnime';
+//import { Url, DispatchUrl } from './../../redux/actions/getAnime';
+
+class Movies extends React.Component{
+
     componentDidMount(){
-        this.detailsVideo()
-        //this.detailsEps()
+        this.props.getEpsVid(this.props.match.params.id)
+        this.props.getDetailsVid(this.props.match.params.id)
     }
 
-    detailsVideo(){
-        axios.get('https://animeapp1.herokuapp.com/api/anime/'+ this.props.match.params.id)
-        .then((res)=>{
-            this.setState({
-                details: res.data.results.detailAnime
-            })
-        })
+    handleClick(){
+      return <Redirect to="/movies/play"/>
     }
 
     render(){
         return(
           <article className="card-post">
             <div className="container">
-            {this.state.details.map((item, key)=>
+            {this.props.getDetails.details.map((item, key)=>
               <div className="contain">
                 <Link to={'/movies/play/'+ item.id}><img src={item.thumbnail} style={{width:200.91,height:301.365, borderRadius:20}} alt="cover" className="cover" /></Link>
                 <div className="hero">
@@ -46,7 +38,11 @@ export default class Movies extends React.Component{
                     <span className="tag">{item.score}</span>
                   </div>
                   <div className="column2">
-                    <p>{item.description}</p>
+                    <p> {item.description}</p>
+                  {this.props.getEpisode.episode.map((item, key)=>
+                        <Link to="/movies/play" onClick={()=>this.props.dispatchURL(item.video_embeded)}>
+                         Episode : {item.episode}</Link>
+                  )}
                   </div>
                 </div>
               </div>
@@ -56,3 +52,9 @@ export default class Movies extends React.Component{
         )
     }
 }
+
+const mapStateToProps = (state)=>{
+  return state
+}
+
+export default connect (mapStateToProps, actionCreate)(Movies);

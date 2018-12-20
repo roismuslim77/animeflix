@@ -19,6 +19,7 @@ const Router = ()=>(
                 <Route exact path="/" component={LandingPage}/>
                 <Route exact path="/movies" component={MovieScreen}/>
                 <Route exact path="/movies/play/:id" component={Player}/>
+                <Route exact path="/movies/play" component={Player}/>
                 <Route exact path="/movies/details/:id" component={MovieDetails}/>
                 <Route component={NotFoundPage}/>
             </Switch>

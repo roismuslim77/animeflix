@@ -12,7 +12,7 @@ export default class Index extends React.Component {
         </ol>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img className="first-slide" src="https://bit.ly/2BvgfxL" alt="First slide"/>
+            <img className="first-slide" style={{maxWidth: '100%', maxHeight: '100%'}} src="https://bit.ly/2BvgfxL" alt="First slide"/>
             <div className="container">
               <div className="carousel-caption text-left">
                 <p><a className="btn btn-danger" href="#" role="button"><span className="glyphicon glyphicon-play"></span> Play</a>&nbsp;<a className="btn btn-danger" href="#"><span className="glyphicon glyphicon-plus"></span> My List</a></p>
@@ -22,7 +22,7 @@ export default class Index extends React.Component {
             </div>
           </div>
           <div className="carousel-item">
-            <img className="second-slide" src="https://bit.ly/2EEmHGE" alt="Second slide"/>
+            <img className="second-slide" style={{maxWidth: '100%', maxHeight: '100%'}} src="https://bit.ly/2EEmHGE" alt="Second slide"/>
             <div className="container">
               <div className="carousel-caption text-left">
                 <p><a className="btn btn-danger" href="#" role="button"><span className="glyphicon glyphicon-play"></span> Play</a>&nbsp;<a className="btn btn-danger" href="#"><span className="glyphicon glyphicon-plus"></span> My List</a></p>
@@ -32,7 +32,7 @@ export default class Index extends React.Component {
             </div>
           </div>
           <div className="carousel-item">
-            <img className="third-slide" src="https://bit.ly/2LrSBH1" alt="Third slide"/>
+            <img className="third-slide" style={{maxWidth: '100%', maxHeight: '100%'}} src="https://bit.ly/2LrSBH1" alt="Third slide"/>
             <div className="container">
               <div className="carousel-caption text-left">
                 <p><a className="btn btn-danger" href="#" role="button"><span className="glyphicon glyphicon-play"></span> Play</a>&nbsp;<a className="btn btn-danger" href="#"><span className="glyphicon glyphicon-plus"></span> My List</a></p>

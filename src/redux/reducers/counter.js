@@ -1,13 +1,12 @@
 const initialState = {
-    card: [
-    ]
+    url: ''
 }
 
 const counter = (state = initialState, action)=>{
     switch (action.type){
-        case "ADD_COUNTER":
+        case "ADD_URL":
          const newState ={
-             card:action.payload
+             url:action.payload
          }
          return newState;
          default: 

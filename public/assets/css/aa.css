@@ -37,7 +37,7 @@
   transform: skewY(-2.2deg);
   transform-origin:0 0;
   
-  //chrome antialias fix
+  /* //chrome antialias fix */
   -webkit-backface-visibility: hidden; 
   
 }
@@ -153,7 +153,7 @@
   }
 }
 
-//star rating stuff via: https://codepen.io/jamesbarnett/pen/vlpkh/
+/* //star rating stuff via: https://codepen.io/jamesbarnett/pen/vlpkh/ */
 
 fieldset, label { margin: 0; padding: 0; }
 
@@ -195,7 +195,7 @@ fieldset, label { margin: 0; padding: 0; }
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
 .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
-//tooltip stuff via: https://codepen.io/peiche/pen/JaftA
+/* //tooltip stuff via: https://codepen.io/peiche/pen/JaftA */
 
 a[data-tooltip] {
   position: relative;

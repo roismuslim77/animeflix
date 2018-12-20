@@ -1,35 +1,22 @@
 import React from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
 
-export default class VideoPlayer extends React.Component{
-   constructor(){
-        super()
-        this.state={
-            video:[],
-            url:''
-        }
-    }
+import * as actionCreate from '../../redux/actions/getAnime';
 
-    componentDidMount(){
-        this.detailsEps()
-    }
-
-    detailsEps(){
-        axios.get('https://animeapp1.herokuapp.com/api/anime/'+ this.props.match.params.id+'/video')
-        .then((res)=>{
-            this.setState({
-                video: res.data.results.listVideo,
-                url: res.data.results.listVideo[0].video_embeded
-            })
-            //console.log('debug'+JSON.stringify(res.data.results.listVideo[0].video_embeded))
-        })
-    }
-
+class VideoPlayer extends React.Component{
     render(){
     return(
         <div className="embed-responsive embed-responsive-16by9">
-             <iframe allowFullScreen className="embed-responsive-item" src={this.state.url}></iframe> 
+             {console.log('str'+this.urlStr)}
+             <iframe allowFullScreen className="embed-responsive-item" src={this.props.counter.url}></iframe> 
         </div>
         )
     }
 }
+
+const mapStateToProps = (state)=>{
+    return state
+}
+
+export default connect (mapStateToProps, actionCreate)(VideoPlayer);
