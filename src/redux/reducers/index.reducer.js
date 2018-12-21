@@ -7,6 +7,7 @@ import cardPopular from './cardPopular';
 import cardMovie from './cardMovie';
 import getEpisode from './getEpisode';
 import getDetails from './getDetails';
+import cardSearch from './search';
 
 const appReducer = combineReducers({
     counter,
@@ -15,7 +16,8 @@ const appReducer = combineReducers({
     cardPopular,
     cardMovie,
     getEpisode,
-    getDetails
+    getDetails,
+    cardSearch
 });
 
 export default appReducer;

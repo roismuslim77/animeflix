@@ -48,6 +48,13 @@ export function Url(url){
     }
 }
 
+export function Search(nama){
+    return{
+        type: "ADD_SEARCH",
+        payload: nama
+    }
+}
+
 export function dispatchURL(url){
     return(dispatch)=>{
         return dispatch(Url(url))
@@ -103,7 +110,20 @@ export function getDetailsVid(id){
             dispatch(Details(res.data.results.detailAnime))
             console.log('debug'+JSON.stringify(res.data.results.detailAnime))
         })
-        .catch(err=>{
+        .catch((err)=>{
+            console.log('debug1'+err)
+        })
+    }
+}
+
+export function getSearch(nama){
+    return(dispatch)=>{
+        return axios.get('https://animeapp1.herokuapp.com/api?search='+nama+'&content=10&page=1')
+        .then((res)=>{
+            dispatch(Search(res.data.results))
+            console.log('debug'+JSON.stringify(res.data.results))
+        })
+        .catch((err)=>{
             console.log('debug1'+err)
         })
     }

@@ -1,12 +1,32 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 export default class Index extends React.Component {
+  state={
+    toHome: false,
+    toSearch: false,
+    search: '',
+  }
+  handleSubmit(e){
+    if(e.key==='Enter'){
+      e.preventDefault();
+      this.setState({toSearch: true})
+    }
+  }
+  handleChange(e){
+    this.setState({search: e.target.value})
+  }
   render() {
+    if(this.state.toHome===true){
+      return <Redirect to='/'/>
+    }
+    if(this.state.toSearch===true){
+      return <Redirect to={'/search/'+this.state.search}/>
+    }
     return (
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
         <div className="container">
-          <a className="navbar-brand" href="index.html">
+          <a className="navbar-brand" href="/index.html">
           <b>Movies</b>
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -27,7 +47,9 @@ export default class Index extends React.Component {
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
-              <span className="glyphicon glyphicon-search"></span>
+              <span className="glyphicon glyphicon-search">
+              <input onChange={(e)=>this.handleChange(e)} onKeyPress={(event)=>this.handleSubmit(event)} type="email" name="text" id="txt" placeholder="Search. . ." />
+              </span>
               <b className="nav-link" href="#">DVD</b>
               <span className="glyphicon glyphicon-bell"></span>
             </form>

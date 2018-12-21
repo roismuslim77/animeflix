@@ -10,6 +10,7 @@ import MovieDetails from '../../movies/screens/selected';
 // import Register from '../../auth/screens/register';
 // import LandingPage from '../../components/LandingPage';
 // import NotFoundPage from '../../components/NotFoundPage';
+import SearchPage from './../../movies/screens/search';
 
 
 const Router = ()=>(
@@ -21,6 +22,7 @@ const Router = ()=>(
                 <Route exact path="/movies/play/:id" component={Player}/>
                 <Route exact path="/movies/play" component={Player}/>
                 <Route exact path="/movies/details/:id" component={MovieDetails}/>
+                <Route exact path="/search/:nama" component={SearchPage}/>
                 <Route component={NotFoundPage}/>
             </Switch>
         </React.Fragment>
