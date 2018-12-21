@@ -25,7 +25,7 @@ export default class Index extends React.Component {
             <img className="second-slide" style={{maxWidth: '100%', maxHeight: '100%'}} src="https://bit.ly/2EEmHGE" alt="Second slide"/>
             <div className="container">
               <div className="carousel-caption text-left">
-                <p><a className="btn btn-danger" href="#" role="button"><span className="glyphicon glyphicon-play"></span> Play</a>&nbsp;<a className="btn btn-danger" href="#"><span className="glyphicon glyphicon-plus"></span> My List</a></p>
+                <p><Link to="/movies/play/123" className="btn btn-danger" role="button"><span className="glyphicon glyphicon-play"></span> Play</Link>&nbsp;<a className="btn btn-danger" href="#"><span className="glyphicon glyphicon-plus"></span> My List</a></p>
                 <h3>Watch Ao No Exorcist Now</h3>
                 <p>He's an ordinary man living an unremarkable life.</p>
               </div>

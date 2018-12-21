@@ -1,12 +1,10 @@
 .contain {
   margin: 0 auto;
-  height: 100%;
-  background: #F0F0ED;
   position: relative;
 }
 
 .hero {
-  height: 342px;  
+  height: 305px;  
   margin:0;
   position: relative;
   overflow: hidden;
@@ -15,7 +13,6 @@
 
 .hero:before {
   content:  '';
-  width:100%; height:100%;
   position:absolute;
   overflow: hidden;
   top:0; left:0;
@@ -32,14 +29,14 @@
 
 .cover {
   position: absolute;
-  top: 160px;
+  top: 120px;
   left: 40px;
   z-index: 2;
 }
 
 .detailss {
   
-  padding: 170px 0 0 280px;
+  padding: 130px 0 0 280px;
   
   
   .title1 {
@@ -84,7 +81,6 @@
 .description {
   
   bottom: 0px;
-  height: 100vh;
   font-size: 16px;
   line-height: 26px;
   color: #B1B0AC;
@@ -116,10 +112,8 @@
 
 .column2 {
   padding-left: 41px;
-  padding-top: 30px;
   margin-left: 20px;
-  width: 70%;
-  color: #111111;
+  width: 75%;
   float: left;
 }
 
@@ -174,7 +168,7 @@ fieldset, label { margin: 0; padding: 0; }
    background-color: #DB202C;
    position: absolute;
    z-index: 3;
-   top: 290px;
+   top: 240px;
    left: 114px;
    width: 60px;
    height: 60px;

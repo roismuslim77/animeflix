@@ -6,6 +6,7 @@ import '../../assets/css/bootstrap.css';
 import '../../assets/css/bootstrap3.css';
 import '../../assets/css/aa.scss';
 import Nav from '../../home/components/nav';
+import Video from '../components/player';
 import * as actionCreate from '../../redux/actions/getAnime';
 //import { Url, DispatchUrl } from './../../redux/actions/getAnime';
 
@@ -48,10 +49,16 @@ class Movies extends React.Component{
                   </div>
                   <div className="column2">
                     <p>Description: <br></br> {item.description}</p>
+              <ul class="list-group bg-dark">
                   {this.props.getEpisode.episode.map((item, key)=>
-                        <Link to="/movies/play" onClick={()=>this.props.dispatchURL(item.video_embeded)}>
-                        <span className="tag"> Episode : {item.episode}</span></Link>
+                    <Link to="/movies/play" onClick={()=>this.props.dispatchURL(item.video_embeded)}>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  {item.title} - Episode : {item.episode}
+                </li>
+                </Link>
                   )}
+              </ul>
+
                   </div>
                 </div>
               </div>

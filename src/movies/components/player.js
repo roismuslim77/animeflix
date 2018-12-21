@@ -22,8 +22,23 @@ class VideoPlayer extends React.Component{
 	      </nav>
         <div className="embed-responsive embed-responsive-16by9">
              {console.log('str'+this.urlStr)}
-             <iframe allowFullScreen className="embed-responsive-item" src={this.props.counter.url}></iframe> 
+             <iframe allowFullScreen src={this.props.counter.url}></iframe> 
         </div>
+
+      <div style={{marginTop: '1%'}}>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
+          <div className="container">
+            <a className="navbar-brand">
+            <b className="glyphicon glyphicon-menu-left"></b>
+            </a>
+            <a className="navbar-brand">
+            <b className="glyphicon glyphicon-menu-right"></b>
+            </a>
+          </div>
+        </nav>
+
+      </div>
+
         </div>
         )
     }
