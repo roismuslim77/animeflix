@@ -2,6 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import '../../../assets/css/bootstrap.css';
+import '../../../assets/css/bootstrap3.css';
+import '../../../assets/css/aa.scss';
+import '../../../assets/css/parrallax.css';
 
 import * as actionCreate from '../../../redux/actions/getAnime';
 import { getMovieAll } from './../../../redux/actions/getAnime';

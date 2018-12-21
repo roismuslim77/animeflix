@@ -35,11 +35,6 @@
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@font-face {
-  font-family: 'MyWebFont';
-  src: url('../font/GothamMedium.woff') format('woff');
-}
-
 *,
 *::before,
 *::after {
@@ -47,7 +42,7 @@
 }
 
 html {
-  font-family: 'MyWebFont';
+  font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;

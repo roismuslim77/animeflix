@@ -59,26 +59,27 @@ class Cards extends React.Component{
       </div>
       {/*page*/}
       <div style={{marginTop: '1%'}}>
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-            <li class="page-item">
-              <a class="page-link" href="#" onClick={()=>{
+        <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
+          <div className="container">
+            <a className="navbar-brand" onClick={()=>{
                 if(this.state.page > 1){
                   this.setState({page: this.state.page-1})
                   this.getContent()
                 }
-              }}>Previous</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#" onClick={()=>
+            }}>
+            <b className="glyphicon glyphicon-menu-left"></b>
+            </a>
+            <a className="navbar-brand" onClick={()=>
                 {
                   this.setState({page: this.state.page+1})
                   this.getContent()
                 }
-              }>Next</a>
-            </li>
-          </ul>
+              }>
+            <b className="glyphicon glyphicon-menu-right"></b>
+            </a>
+          </div>
         </nav>
+
       </div>
       </div>
     )
