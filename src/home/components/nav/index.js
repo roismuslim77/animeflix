@@ -23,15 +23,15 @@ export default class Index extends React.Component {
               </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">TV Shows</a>
+                <a className="nav-link" href="/TV">TV Shows</a>
               </li>
               <li className="nav-item">
               <Link to="/movies">
-                <a className="nav-link">Movies</a>
+                <a className="nav-link" href="/Movies">Movies</a>
               </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Recently Added</a>
+                <a className="nav-link" href="/Updated">Recently Added</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link">My List</a>

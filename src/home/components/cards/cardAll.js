@@ -26,6 +26,8 @@ class Cards extends React.Component{
             this.props.getAnimePop()
          } else if (this.props.typeList === 'Top') {
            this.props.getAnimeTop()
+         } else if(this.props.typeList === 'Search'){
+           this.props.getSearch()
          } else {
            this.props.getMovie()
          }
@@ -114,6 +116,33 @@ class Cards extends React.Component{
     ))
   }
 
+  cardSearch(){
+    return(
+    this.props.cardSearch.cardSearch.map((item,key)=>
+    <div className="movie-card">
+    <Link to={'/movies/details/'+ item.id}>
+      <img className="movie-header" src={item.thumbnail} style={{backgroundSize:'cover'}}/>
+      <div className="movie-content">
+        <div className="movie-info">
+          <div className="info-section">
+            <label>Status</label>
+            <span>{item.status}</span>
+          </div>
+          <div className="info-section">
+            <label>Views</label>
+            <span>{item.view}</span>
+          </div>
+          <div className="info-section">
+            <label>Score</label>
+            <span>{item.score}</span>
+          </div>
+        </div>
+      </div>
+    </Link>
+    </div>
+    ))
+  }
+
   render(){
     switch(this.props.typeList){
         case "Pop":
@@ -121,7 +150,9 @@ class Cards extends React.Component{
         case "Top":
         return(<div>{this.cardTopAll()}</div>)
         case "Movie":
-        return(<div>{this.cardMovie()}{console.log(this.props.cardMovie.cardMovie)}</div>)
+        return(<div>{this.cardMovie()}</div>)
+        case "Search":
+        return(<div>{this.cardSearch()}{console.log(this.props.cardMovie.cardMovie)}</div>)
         default:
         return(console.log('Connection Errorr'))
       }

@@ -11,17 +11,19 @@ import * as actionCreate from '../../redux/actions/getAnime';
 //import { Url, DispatchUrl } from './../../redux/actions/getAnime';
 
 class Movies extends React.Component{
-
     componentDidMount(){
         this.props.getEpsVid(this.props.match.params.id)
         this.props.getDetailsVid(this.props.match.params.id)
-
     }
-
-    handleClick(){
-      return <Redirect to="/movies/play"/>
+    handleError(vid){
+      var url = vid;
+      var subUrl = url.substring(6,0);
+      if (subUrl === 'http:h'){
+        return '#'
+      } else {
+        return '/movies/play'
+      }
     }
-
     render(){
         return(
           <div>
@@ -30,7 +32,7 @@ class Movies extends React.Component{
             <div className="container">
             {this.props.getDetails.details.map((item, key)=>
               <div className="contain">
-              <Link to={'/movies/play'} onClick={()=>this.props.dispatchURL(this.props.getEpisode.episode[0].video_embeded)}>
+              <Link to='/movies/play' onClick={()=>this.props.dispatchURL(this.props.getEpisode.episode[0].video_embeded)}>
                 <a className="trailer-preview"><i class="glyphicon glyphicon-play" style={{color:'#fff'}} aria-hidden="true"></i></a>
               </Link>
                 <img src={item.thumbnail} style={{width:200.91,height:301.365, borderRadius:20}} alt="cover" className="cover" />
@@ -49,15 +51,10 @@ class Movies extends React.Component{
                   </div>
                   <div className="column2">
                     <p>Description: <br></br> {item.description}</p>
-              <ul class="list-group bg-dark">
                   {this.props.getEpisode.episode.map((item, key)=>
-                    <Link to="/movies/play" onClick={()=>this.props.dispatchURL(item.video_embeded)}>
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                  {item.title} - Episode : {item.episode}
-                </li>
-                </Link>
+                        <Link to={this.handleError(item.video_embeded)} onClick={()=>this.props.dispatchURL(item.video_embeded)}>
+                        <button className="btn btn-danger" style={{margin:5}}> Episode : {item.episode}</button></Link>
                   )}
-              </ul>
 
                   </div>
                 </div>
