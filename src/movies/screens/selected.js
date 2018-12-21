@@ -31,7 +31,7 @@ class Movies extends React.Component{
             <div className="container">
             {this.props.getDetails.details.map((item, key)=>
               <div className="contain">
-              <Link to='/movies/play' onClick={()=>this.props.dispatchURL(this.props.getEpisode.episode[0].video_embeded)}>
+              <Link to={'/movies/play/'+item.title} onClick={()=>this.props.dispatchURL(this.props.getEpisode.episode[0].video_embeded)}>
                 <a className="trailer-preview"><i class="glyphicon glyphicon-play" style={{color:'#fff'}} aria-hidden="true"></i></a>
               </Link>
                 <img src={item.thumbnail} style={{width:200.91,height:301.365, borderRadius:20}} alt="cover" className="cover" />

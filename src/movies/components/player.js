@@ -22,7 +22,7 @@ class VideoPlayer extends React.Component{
 	      </nav>
         <div className="embed-responsive embed-responsive-16by9">
              {console.log('str'+this.urlStr)}
-             <iframe allowFullScreen className="embed-responsive-item" src={this.props.counter.url}></iframe> 
+             <iframe allowFullScreen className="embed-responsive-item" src={this.props.match.params.title}></iframe> 
         </div>
         </div>
         )
