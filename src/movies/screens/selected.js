@@ -57,7 +57,7 @@ class Movies extends React.Component{
                     <p>Description: <br></br> {item.description}</p>
                   {this.props.getEpisode.episode.map((item, key)=>
                         <Link to={this.handleError(item.video_embeded)} onClick={()=>this.props.dispatchURL(item.video_embeded)}>
-                        <button className="btn btn-danger" style={{margin:5}}> Episode : {item.episode}</button></Link>
+                        <button className="btn btn-outline-danger" style={{margin:5}}> Episode : {item.episode}</button></Link>
                   )}
 
                   </div>
