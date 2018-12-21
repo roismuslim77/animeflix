@@ -40,7 +40,12 @@ export function Details(item){
         payload: item
     }
 }
-
+export function Genre(item){
+    return{
+        type: "ADD_GENRE",
+        payload: item
+    }
+}
 export function Url(url){
     return{
         type: "ADD_URL",
@@ -95,7 +100,7 @@ export function getEpsVid(id){
         return axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id +'/video')
         .then((res)=>{
             dispatch(Eps(res.data.results.listVideo))
-            console.log('debug'+JSON.stringify(res.data.results))
+            //console.log('debug'+JSON.stringify(res.data.results))
         })
         .catch(err=>{
             console.log('debug1'+err)
@@ -108,7 +113,21 @@ export function getDetailsVid(id){
         return axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
         .then((res)=>{
             dispatch(Details(res.data.results.detailAnime))
-            console.log('debug'+JSON.stringify(res.data.results.detailAnime))
+            dispatch(Genre(res.data.results.genres))
+            console.log('debug'+JSON.stringify(res.data.results.genres))
+        })
+        .catch((err)=>{
+            console.log('debug1'+err)
+        })
+    }
+}
+
+export function getGenre(id){
+    return(dispatch)=>{
+        return axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
+        .then((res)=>{
+            dispatch(Genre(res.data.results.genres))
+            //console.log('debug genre'+JSON.stringify(res.data.results.genres))
         })
         .catch((err)=>{
             console.log('debug1'+err)
@@ -121,7 +140,7 @@ export function getSearch(nama){
         return axios.get('https://animeapp1.herokuapp.com/api?search='+nama+'&content=10&page=1')
         .then((res)=>{
             dispatch(Search(res.data.results))
-            console.log('debug'+JSON.stringify(res.data.results))
+            //console.log('debug'+JSON.stringify(res.data.results))
         })
         .catch((err)=>{
             console.log('debug1'+err)

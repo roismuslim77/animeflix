@@ -11,8 +11,8 @@ import * as actionCreate from '../../redux/actions/getAnime';
 
 class Movies extends React.Component{
     componentDidMount(){
-        this.props.getEpsVid(this.props.match.params.id)
-        this.props.getDetailsVid(this.props.match.params.id)
+      this.props.getEpsVid(this.props.match.params.id)
+      this.props.getDetailsVid(this.props.match.params.id)
     }
     handleError(vid){
       var url = vid;
@@ -39,7 +39,11 @@ class Movies extends React.Component{
                   <div className="detailss">      
                     <div className="title1">{item.title} <span>{item.rating}</span></div>
                     <div className="title2">{item.status}</div>
-                    <span className="likes">{item.view} views</span>
+                    <div className="likes">{item.view} views</div>
+                    {this.props.getGenres.genre.map((item, key)=>
+                        <Link to=""><span className="tag">{item.title}</span></Link>
+                      )}
+                    {console.log(JSON.stringify(this.props.getGenres.genre))}
                   </div>
                 </div>
                 <div className="description">

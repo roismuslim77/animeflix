@@ -7,6 +7,7 @@ import cardPopular from './cardPopular';
 import cardMovie from './cardMovie';
 import getEpisode from './getEpisode';
 import getDetails from './getDetails';
+import getGenres from './getGenre';
 import cardSearch from './search';
 
 const appReducer = combineReducers({
@@ -17,7 +18,8 @@ const appReducer = combineReducers({
     cardMovie,
     getEpisode,
     getDetails,
-    cardSearch
+    getGenres,
+    cardSearch,
 });
 
 export default appReducer;
