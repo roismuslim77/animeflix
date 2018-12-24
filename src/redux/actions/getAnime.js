@@ -9,10 +9,15 @@ export function AnimePopular(item){
 
 export function AnimeTopAll(item){
     return{
-        type: "ADD_ANIMTOP",
+        type: "ADDANIMTOP",
         payload: item
     }
 }
+
+export const animeTop = ()=>({
+    type: "ADDANIMTOP",
+    payload : axios.get('https://animeapp1.herokuapp.com/api?sort=TopAll&content=10&limit=10&page=1')
+})
 
 export function MovieAll(item){
     return{

@@ -1,4 +1,3 @@
-
 import { createLogger } from 'redux-logger';
 import promiseMiddleware from 'redux-promise-middleware';
 
