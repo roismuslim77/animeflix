@@ -65,6 +65,37 @@ export function dispatchURL(url){
         return dispatch(Url(url))
     }
 }
+
+export function relatedGenre(item){
+    return{
+        type: "ADD_RELATE",
+        payload: item
+    }
+}
+export function auth(item){
+    return{
+        type: "LOGIN",
+        payload: item
+    }
+}
+
+//=============================================================================
+export function getAuth(item){
+    
+    return(dispatch)=>{
+        return axios.post('http://192.168.0.29:3333/api/auth/login',{
+            email: item.email,
+            password: item.password
+        })
+        .then((res)=>{
+            dispatch(auth(res.data))
+        //    console.log('action data', res.data)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }   
+}
 export function getAnimePop(){
     return(dispatch)=>{
         return axios.get('https://animeapp1.herokuapp.com/api?sort=Popular&content=10&limit=10&page=1')
@@ -103,7 +134,7 @@ export function getEpsVid(id){
             //console.log('debug'+JSON.stringify(res.data.results))
         })
         .catch(err=>{
-            console.log('debug1'+err)
+            console.log('debugerr'+err)
         })
     }
 }
@@ -114,10 +145,10 @@ export function getDetailsVid(id){
         .then((res)=>{
             dispatch(Details(res.data.results.detailAnime))
             dispatch(Genre(res.data.results.genres))
-            console.log('debug'+JSON.stringify(res.data.results.genres))
+            //console.log('debug'+JSON.stringify(res.data.results.genres))
         })
         .catch((err)=>{
-            console.log('debug1'+err)
+            console.log('debugerr'+err)
         })
     }
 }
@@ -130,7 +161,7 @@ export function getGenre(id){
             //console.log('debug genre'+JSON.stringify(res.data.results.genres))
         })
         .catch((err)=>{
-            console.log('debug1'+err)
+            console.log('debugerr'+err)
         })
     }
 }
@@ -143,7 +174,20 @@ export function getSearch(nama){
             //console.log('debug'+JSON.stringify(res.data.results))
         })
         .catch((err)=>{
-            console.log('debug1'+err)
+            console.log('debugerr'+err)
+        })
+    }
+}
+
+export function getRelate(nama){
+    return(dispatch)=>{
+        return axios.get('http://animeapp1.herokuapp.com/api/genre/'+nama+'?content=10&page=1')
+        .then((res)=>{
+            dispatch(relatedGenre(res.data.results))
+            //console.log('debug'+JSON.stringify(res.data.results))
+        })
+        .catch((err)=>{
+            console.log('debugerr'+err)
         })
     }
 }

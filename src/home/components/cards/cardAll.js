@@ -144,6 +144,7 @@ class Cards extends React.Component{
   }
 
   render(){
+    console.log(this.props)
     switch(this.props.typeList){
         case "Pop":
         return(<div>{this.cardPopular()}</div>)

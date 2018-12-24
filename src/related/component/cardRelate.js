@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-import {MovieAll} from '../../redux/actions/getAnime';
+import {relatedGenre} from '../../redux/actions/getAnime';
 
 class Cards extends React.Component{
   base_url = 'https://animeapp1.herokuapp.com/api'
@@ -11,7 +11,7 @@ class Cards extends React.Component{
   constructor(){
     super();
     this.state ={
-        page: 1
+        page: 0
     }
 }
 
@@ -24,9 +24,9 @@ class Cards extends React.Component{
   }
 
   getContent(){
-    axios.get(this.base_url+'?sort=Movie&content=10&page='+this.props.page)
+    axios.get(this.base_url+'/genre/'+this.props.genre+'?content=10&page='+this.props.page)
     .then(res=>{
-      this.props.dispatch(MovieAll(res.data.results))
+      this.props.dispatch(relatedGenre(res.data.result))
     })
     .catch(err=>{
       alert(err)
@@ -37,7 +37,7 @@ class Cards extends React.Component{
     return (
     <div>
     <div>
-      {this.props.cards.cardMovie.map((item,key)=>
+      {this.props.getRelate.relateList.map((item,key)=>
         <div className="movie-card">
         <Link to={'/movies/details/'+ item.id}>
           <img className="movie-header" src={item.thumbnail} style={{backgroundSize:'cover'}}/>
@@ -65,12 +65,12 @@ class Cards extends React.Component{
       <div style={{marginTop: '1%'}}>
         <nav className="navbar navbar-expand-lg navbar-dark bg-transparent">
           <div className="container">
-          <a className="navbar-brand" onClick={()=>{
+            <a className="navbar-brand" onClick={()=>{
                 if(this.state.page > 2){
                     this.setState({page: this.state.page-1})
                 }
             }}>
-            <Link to={'/movies/'+this.state.page}><b className="glyphicon glyphicon-menu-left"></b></Link>
+            <Link to={'/movies/'+this.props.genre+'/'+this.state.page}><b className="glyphicon glyphicon-menu-left"></b></Link>
             </a>
             <a className="navbar-brand" onClick={()=>
                 {
@@ -78,7 +78,7 @@ class Cards extends React.Component{
                   this.getContent()
                 }
               }>
-            <Link to ={'/movies/'+this.state.page}><b className="glyphicon glyphicon-menu-right"></b></Link>
+            <Link to ={'/movies/'+this.props.genre+'/'+this.state.page}><b className="glyphicon glyphicon-menu-right"></b></Link>
             </a>
           </div>
         </nav>
@@ -91,7 +91,7 @@ class Cards extends React.Component{
 
 const mapStateToProps = (state)=>{
   return{
-    cards: state.cardMovie
+    getRelate: state.getRelate
   }
 }
 

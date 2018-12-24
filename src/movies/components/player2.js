@@ -12,9 +12,9 @@ class VideoPlayer extends React.Component{
     	<div>
 	      <nav className="navbar navbar-expand-lg navbar-dark fixed-top bg-transparent">
 	        <div className="container">
-	          {/* <Link className="navbar-brand" to="/movies/details/:id">
+	          <Link className="navbar-brand" to="/movies/details/:id">
 	          <b className="glyphicon glyphicon-arrow-left"></b>
-	          </Link> */}
+	          </Link>
 	          <Link className="navbar-brand" to="/">
 	          <img src="https://bit.ly/2EC6kKY"/>
 	          </Link>
@@ -48,7 +48,9 @@ class VideoPlayer extends React.Component{
 }
 
 const mapStateToProps = (state)=>{
-    return state
-}
-
-export default connect (mapStateToProps, actionCreate)(VideoPlayer);
+    return{
+      cards: state.cardMovie
+    }
+  }
+  
+  export default connect (mapStateToProps)(VideoPlayer);

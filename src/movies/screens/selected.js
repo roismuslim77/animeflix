@@ -6,6 +6,7 @@ import '../../assets/css/bootstrap.css';
 import '../../assets/css/bootstrap3.css';
 import '../../assets/css/aa.scss';
 import Nav from '../../home/components/nav';
+import Video from '../components/player';
 import * as actionCreate from '../../redux/actions/getAnime';
 //import { Url, DispatchUrl } from './../../redux/actions/getAnime';
 
@@ -41,7 +42,7 @@ class Movies extends React.Component{
                     <div className="title2">{item.status}</div>
                     <div className="likes">{item.view} views</div>
                     {this.props.getGenres.genre.map((item, key)=>
-                        <Link to=""><span className="tag">{item.title}</span></Link>
+                        <Link to={'/movies/'+item.title+'/1'}><span className="tag">{item.title}</span></Link>
                       )}
                     {console.log(JSON.stringify(this.props.getGenres.genre))}
                   </div>
@@ -56,8 +57,9 @@ class Movies extends React.Component{
                     <p>Description: <br></br> {item.description}</p>
                   {this.props.getEpisode.episode.map((item, key)=>
                         <Link to={this.handleError(item.video_embeded)} onClick={()=>this.props.dispatchURL(item.video_embeded)}>
-                        <button className="tag"> Episode : {item.episode}</button></Link>
+                        <button className="btn btn-outline-danger" style={{margin:5}}> Episode : {item.episode}</button></Link>
                   )}
+
                   </div>
                 </div>
               </div>
