@@ -61,7 +61,7 @@ export default class Index extends React.Component {
               <input onChange={(e)=>this.handleChange(e)} onKeyPress={(event)=>this.handleSubmit(event)} style={{color:'#fff'}} type="text" class="form-control input-sm bg-dark" maxlength="50" placeholder="Search..." />
               <span className="glyphicon glyphicon-search"></span>
               <b className="nav-link" href="#">DVD</b>
-              <Link to="/user"><span className="glyphicon glyphicon-bell"></span></Link>
+              <Link to="/login"><b className='tag'>Login</b></Link>
             </form>
             </div>
           </div>

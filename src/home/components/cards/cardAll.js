@@ -93,21 +93,21 @@ class Cards extends React.Component{
     return(
     this.props.cardTopAll.cardTopAll.map((item,key)=>
     <div className="movie-card">
-    <Link to={'/movies/details/'+ item.animes.id}>
-      <img className="movie-header" src={item.animes.thumbnail} style={{backgroundSize:'cover'}}/>
+    <Link to={'/movies/details/'+ item.detailAnime.id}>
+      <img className="movie-header" src={item.detailAnime.thumbnail} style={{backgroundSize:'cover'}}/>
       <div className="movie-content">
         <div className="movie-info">
           <div className="info-section">
             <label>Status</label>
-            <span>{item.animes.status}</span>
+            <span>{item.detailAnime.status}</span>
           </div>
           <div className="info-section">
             <label>Views</label>
-            <span>{item.animes.view}</span>
+            <span>{item.detailAnime.view}</span>
           </div>
           <div className="info-section">
             <label>Score</label>
-            <span>{item.animes.score}</span>
+            <span>{item.detailAnime.score}</span>
           </div>
         </div>
       </div>

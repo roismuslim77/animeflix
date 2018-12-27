@@ -13,15 +13,15 @@ import MovieDetails from '../../movies/screens/selected';
 // import NotFoundPage from '../../components/NotFoundPage';
 import SearchPage from './../../movies/screens/search';
 import relatePage from '../../related/screen';
-import loginPage from '../../auth/screen/login';
-import userPage from '../../user/screen/user';
+import loginPage from '../../auth/screens/Login';
+import regisPage from '../../auth/screens/Register';
 
 const Router = ()=>(
     <BrowserRouter>
         <React.Fragment>
             <Switch>
                 <Route exact path="/" component={LandingPage}/>
-                <Route exact path="/user" component={userPage}/>
+                <Route exact path="/register" component={regisPage}/>
                 <Route exact path="/login" component={loginPage}/>
                 <Route exact path="/movies/:page" component={MovieScreen}/>
                 <Route exact path="/recent" component={RecentScreen}/>
