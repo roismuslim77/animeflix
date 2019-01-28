@@ -1,14 +1,30 @@
 const initialState = {
-    details: []
+    details: [],
+    isLoading: false,
+    isFinish: false,
+    isError: false,
 }
 
 const card = (state = initialState, action)=>{
     switch (action.type){
-        case "ADD_DETAILS":
-         const pop ={
-             details:action.payload
-         }
-         return pop;
+        case "ADDDETAILS_PENDING":
+            return{
+                ...state,
+                isLoading: true
+            }
+        case "ADDDETAILS_FULFILLED":
+            return{
+                ...state,
+                isLoading: false,
+                isFinish: true,
+                details: action.payload.data.results
+            }
+        case "ADDDETAILS_REJECTED":
+            return{
+                ...state,
+                isLoading: false,
+                isError: true,
+            }
          default: 
          return state;
     }

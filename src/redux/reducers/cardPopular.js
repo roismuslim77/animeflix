@@ -7,18 +7,18 @@ const initialState = {
 
 const card = (state = initialState, action)=>{
     switch (action.type){
-        case "ADD_ANIMPOP_PENDING":
+        case "ADDANIMPOP_PENDING":
          return{
             ...state, isLoading: true
          }
-        case "ADD_ANIMPOP_FULFILLED":
+        case "ADDANIMPOP_FULFILLED":
          return{
              ...state,
              isLoading: false,
              isFinish: true,
-             cardPopular: action.payload
+             cardPopular: action.payload.data.results
          }
-        case "ADD_ANIMPOP_REJECTED":
+        case "ADDANIMPOP_REJECTED":
          return{
              ...state,
              isError: true, isLoading: false

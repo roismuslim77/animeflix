@@ -1,28 +1,30 @@
 import axios from 'axios';
 
-export function AnimePopular(item){
-    return{
-        type: "ADD_ANIMPOP",
-        payload: item
-    }
-}
+const base_url = 'https://animeapp1.herokuapp.com'
 
-export function AnimeTopAll(item){
+export function animePop(){
     return{
-        type: "ADDANIMTOP",
-        payload: item
+        type: "ADDANIMPOP",
+        payload: axios.get(base_url+'/api?sort=Popular&content=10&limit=10&page=1')
     }
 }
 
 export const animeTop = ()=>({
     type: "ADDANIMTOP",
-    payload : axios.get('https://animeapp1.herokuapp.com/api?sort=TopAll&content=10&limit=10&page=1')
+    payload : axios.get(base_url+'/api?sort=TopAll&content=10&limit=10&page=1')
 })
 
-export function MovieAll(item){
+export function movieAll(item){
     return{
-        type: "ADD_MOVALL",
-        payload: item
+        type: "ADDMOVALL",
+        payload: axios.get(base_url+'/api?sort=Movie&content=10&page='+item)
+    }
+}
+
+export function detailsVid(id){
+    return{
+        type: "ADDDETAILS",
+        payload: axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
     }
 }
 
@@ -101,35 +103,25 @@ export function getAuth(item){
         })
     }   
 }
-export function getAnimePop(){
-    return(dispatch)=>{
-        return axios.get('https://animeapp1.herokuapp.com/api?sort=Popular&content=10&limit=10&page=1')
-        .then((res)=>{
-            dispatch(AnimePopular(res.data.results))
-           // console.log('action', res.data.results)
-        })
-    }   
-}
+// export function getAnimePop(){
+//     return(dispatch)=>{
+//         return axios.get('https://animeapp1.herokuapp.com/api?sort=Popular&content=10&limit=10&page=1')
+//         .then((res)=>{
+//             dispatch(AnimePopular(res.data.results))
+//            // console.log('action', res.data.results)
+//         })
+//     }   
+// }
 
-export function getAnimeTop(){
-    return(dispatch)=>{
-        return axios.get('https://animeapp1.herokuapp.com/api?sort=TopAll&content=10&limit=10&page=1')
-        .then((res)=>{
-            dispatch(AnimeTopAll(res.data.results))
-           // console.log('action', res.data.results)
-        })
-    }
-}
-
-export function getMovie(){
-    return(dispatch)=>{
-        return axios.get('https://animeapp1.herokuapp.com/api?sort=Movie&content=10&page=1')
-        .then((res)=>{
-            dispatch(MovieAll(res.data.results))
-           //console.log('action', res.data.results)
-        })
-    }
-}
+// export function getAnimeTop(){
+//     return(dispatch)=>{
+//         return axios.get('https://animeapp1.herokuapp.com/api?sort=TopAll&content=10&limit=10&page=1')
+//         .then((res)=>{
+//             dispatch(AnimeTopAll(res.data.results))
+//            // console.log('action', res.data.results)
+//         })
+//     }
+// }
 
 export function getEpsVid(id){
     return(dispatch)=>{
@@ -144,19 +136,19 @@ export function getEpsVid(id){
     }
 }
 
-export function getDetailsVid(id){
-    return(dispatch)=>{
-        return axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
-        .then((res)=>{
-            dispatch(Details(res.data.results.detailAnime))
-            dispatch(Genre(res.data.results.genres))
-            //console.log('debug'+JSON.stringify(res.data.results.genres))
-        })
-        .catch((err)=>{
-            console.log('debugerr'+err)
-        })
-    }
-}
+// export function getDetailsVid(id){
+//     return(dispatch)=>{
+//         return axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
+//         .then((res)=>{
+//             dispatch(Details(res.data.results.detailAnime))
+//             dispatch(Genre(res.data.results.genres))
+//             //console.log('debug'+JSON.stringify(res.data.results.genres))
+//         })
+//         .catch((err)=>{
+//             console.log('debugerr'+err)
+//         })
+//     }
+// }
 
 export function getGenre(id){
     return(dispatch)=>{
