@@ -24,7 +24,7 @@ export function movieAll(item){
 export function detailsVid(id){
     return{
         type: "ADDDETAILS",
-        payload: axios.get('https://animeapp1.herokuapp.com/api/anime/'+ id)
+        payload: axios.get(base_url+'/api/anime/'+ id)
     }
 }
 
@@ -62,8 +62,8 @@ export function Url(url){
 
 export function Search(nama){
     return{
-        type: "ADD_SEARCH",
-        payload: nama
+        type: "ADDSEARCH",
+        payload: axios.get(base_url+'/api?search='+nama+'&content=10&page=1')
     }
 }
 

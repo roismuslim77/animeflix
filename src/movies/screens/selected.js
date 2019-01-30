@@ -30,7 +30,7 @@ class Movies extends React.Component{
       <div>
       <Nav/>
       {this.props.getDetails.isLoading===true ?
-        <div style={{marginTop: '50%'}}>
+        <div style={{marginTop: '20%'}}>
         <LoadingOverlay 
           active={this.props.getDetails.isLoading}
         spinner/></div> :

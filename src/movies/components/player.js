@@ -31,7 +31,7 @@ class VideoPlayer extends React.Component{
             <a className="navbar-brand">
             <b className="glyphicon glyphicon-menu-left"></b>
             </a>
-            <Link to='/movies/details/'>
+            <Link to='#'>
             Lihat semua episode
             </Link>
             <a className="navbar-brand">

@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import LoadingOverlay from 'react-loading-overlay';
 
-import {movieAll} from '../../redux/actions/getAnime';
+import {movieAll, detailsVid} from '../../redux/actions/getAnime';
 
 class Cards extends React.Component{
   base_url = 'https://animeapp1.herokuapp.com/api'
@@ -15,6 +15,10 @@ class Cards extends React.Component{
         page: 1
     }
 }
+
+  addDetails(id){
+    this.props.dispatch(detailsVid(id)) 
+  }
 
   componentDidMount(){
     var strPage = this.props.page
@@ -38,12 +42,13 @@ class Cards extends React.Component{
   }
 
   cardMov(){
+    console.log(this.props.cardMovie.cardMovie)
     return(
   <div>
       <div>
         {this.props.cardMovie.cardMovie.map((item,key)=>
           <div className="movie-card">
-          <Link to={'/movies/details/'+ item.detailAnime.name}>
+          <Link to={'/movies/details/'+ item.detailAnime.title} onClick={()=>this.addDetails(item.detailAnime.id)}>
             <img className="movie-header" src={item.detailAnime.thumbnail} style={{backgroundSize:'cover'}}/>
             <div className="movie-content">
               <div className="movie-info">

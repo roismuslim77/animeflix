@@ -1,14 +1,28 @@
 const initialState = {
-    search: []
+    search: [],
+    isError: false,
+    isFinish: false,
+    isLoading: false
 }
 
 const counter = (state = initialState, action)=>{
     switch (action.type){
-        case "ADD_SEARCH":
-         const newState ={
-             search:action.payload
+        case "ADDSEARCH_PENDING":
+         return{
+            ...state, isLoading: true
          }
-         return newState;
+        case "ADDSEARCH_FULFILLED":
+         return{
+             ...state,
+             isLoading: false,
+             isFinish: true,
+             search: action.payload.data.results
+         }
+        case "ADDASEARCH_REJECTED":
+         return{
+             ...state,
+             isError: true, isLoading: false
+         }
          default: 
          return state;
     }

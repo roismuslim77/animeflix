@@ -35,16 +35,7 @@ export default class Index extends React.Component {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <li className="nav-item active">
-                <div class="input-group">
-                  <select className="form-control bg-dark" id="inputGroupSelect01">
-                    <option selected>Genres&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-              </li>
+              
             </ul>
             <div class="search">
             <form className="form-inline my-2 my-lg-0">

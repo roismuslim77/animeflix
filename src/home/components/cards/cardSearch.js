@@ -7,7 +7,7 @@ import '../../../assets/css/bootstrap3.css';
 import '../../../assets/css/aa.scss';
 import '../../../assets/css/parrallax.css';
 
-import * as actionCreate from '../../../redux/actions/getAnime';
+import {Search, detailsVid} from '../../../redux/actions/getAnime';
 
 class Cards extends React.Component{
     //   componentDidMount(){
@@ -19,29 +19,32 @@ class Cards extends React.Component{
     //       alert(err)
     //     })
     //   }
-    
+        addDetails(id){
+          this.props.dispatch(detailsVid(id)) 
+        }
+
         componentDidMount(){
-            this.props.getSearch(this.props.name)
+            this.props.dispatch(Search(this.props.name))
         }
         cardSearch(){
             return(
             this.props.cardSearch.search.map((item,key)=>
             <div className="movie-card">
-            <Link to={'/movies/details/'+ item.id}>
-              <img className="movie-header" src={item.thumbnail} style={{backgroundSize:'cover'}}/>
+            <Link  to={'/movies/details/'+ item.detailAnime.title} onClick={()=>this.addDetails(item.detailAnime.id)}>
+              <img className="movie-header" src={item.detailAnime.thumbnail} style={{backgroundSize:'cover'}}/>
               <div className="movie-content">
                 <div className="movie-info">
                   <div className="info-section">
                     <label>Status</label>
-                    <span>{item.status}</span>
+                    <span>{item.detailAnime.status}</span>
                   </div>
                   <div className="info-section">
                     <label>Views</label>
-                    <span>{item.view}</span>
+                    <span>{item.detailAnime.view}</span>
                   </div>
                   <div className="info-section">
                     <label>Score</label>
-                    <span>{item.score}</span>
+                    <span>{item.detailAnime.score}</span>
                   </div>
                 </div>
               </div>
@@ -61,4 +64,4 @@ const mapStateToProps = (state)=>{
     return state
 }
           
-export default connect (mapStateToProps, actionCreate)(Cards);
+export default connect (mapStateToProps)(Cards);
