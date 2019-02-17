@@ -10,15 +10,6 @@ import '../../../assets/css/parrallax.css';
 import {Search, detailsVid} from '../../../redux/actions/getAnime';
 
 class Cards extends React.Component{
-    //   componentDidMount(){
-    //     axios.get('https://animeapp1.herokuapp.com/api?sort=Popular&content=10&page=1')
-    //     .then(res=>{
-    //       this.props.dispatch(AnimeAll(res.data.results))
-    //     })
-    //     .catch(err=>{
-    //       alert(err)
-    //     })
-    //   }
         addDetails(id){
           this.props.dispatch(detailsVid(id)) 
         }
